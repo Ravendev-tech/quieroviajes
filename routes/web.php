@@ -24,8 +24,20 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    if (Auth::check()) {
+        $user = Auth::user();
+        if($user->user_level == 1){
+          return redirect('homeadmin');
+        }
+        if($user->user_level == 3){
+          return redirect('homecostumer');
+        }
+    }
+    else{
+      return redirect('login');
+    }
 });
+
 
 Route::get('logout', function ()
 {
@@ -36,6 +48,7 @@ Route::get('logout', function ()
 
 
 Auth::routes();
+
 
 
   Route::patch('/avatarupdate', [UserController::class, 'avatarupdate'])->name('avatarupdate');
@@ -66,20 +79,19 @@ Auth::routes();
   Route::patch('/destination-update/{id}', [DestinationsController::class, 'update'])->name('destination.update');
   Route::get('/destination-destroy/{id}', [DestinationsController::class, 'destroy'])->name('destination.destroy');
 
-  Route::get('/homeadmin', [UserController::class, 'homeadmin'])->name('homeadmin');
 
 
 
 // routes for admins (1 admin, 2 vendor, 3 costumer)
 Route::middleware(['auth','user-role:1'])->group(function(){
-
+  Route::get('/homeadmin', [UserController::class, 'homeadmin'])->name('homeadmin');
   Route::get('/user-list', [ClientsController::class, 'index'])->name('clients.index');
   Route::get('/user-create', [ClientsController::class, 'create'])->name('clients.create');
   Route::post('/user-create-s', [ClientsController::class, 'store'])->name('clients.store');
   Route::get('/user-edit/{id}', [ClientsController::class, 'edit'])->name('clients.edit');
   Route::patch('/user-update/{id}', [ClientsController::class, 'update'])->name('clients.update');
   Route::get('/user-destroy/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
-    Route::get('/daily/{id}', [HomeController::class, 'daily'])->name('daily');
+  Route::get('/daily/{id}', [HomeController::class, 'daily'])->name('daily');
 });
 
 
