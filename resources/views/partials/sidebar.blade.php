@@ -17,40 +17,26 @@
       </a>
     </li>
     <li>
-        <a href="{{route('indexcostumer')}}" class="">
-        <div class="parent-icon"><i class="bx bx-grid-alt"></i>
+      <a href="{{route('travels.index')}}" class="">
+        <div class="parent-icon"><i class="lni lni-folder"></i>
         </div>
-        <div class="menu-title">Productos</div>
+        <div class="menu-title">Expedientes</div>
+      </a>
+    <li>
+      <a href="{{route('destination.index')}}" class="">
+        <div class="parent-icon"><i class="lni lni-travel"></i>
+        </div>
+        <div class="menu-title">Destinos</div>
       </a>
     </li>
     <li>
-      <a href="{{route('profile','main')}}" class="">
-        <div class="parent-icon"><i class="lni lni-ticket"></i>
+      <a href="{{route('logout')}}" class="">
+        <div class="parent-icon"><i class="fadeIn animated bx bx-log-out"></i>
         </div>
-        <div class="menu-title">Mi Perfil</div>
+        <div class="menu-title">Salir</div>
       </a>
     </li>
-    <li>
-      <a href="{{route('profile','orders')}}" class="">
-        <div class="parent-icon"><i class="bx bx-message-square-edit"></i>
-        </div>
-        <div class="menu-title">Mis Ordenes</div>
-      </a>
-    </li>
-    <li>
-      <a href="{{route('profile','points')}}" class="">
-        <div class="parent-icon"><i class="lni lni-ticket"></i>
-        </div>
-        <div class="menu-title">Mis Puntos</div>
-      </a>
-    </li>
-    <li>
-      <a href="{{route('profile','changes')}}" class="">
-        <div class="parent-icon"><i class="lni lni-ticket"></i>
-        </div>
-        <div class="menu-title">Mis Canjes</div>
-      </a>
-    </li>
+
   </ul>
   @else
   @endif

@@ -61,81 +61,23 @@ class UserController extends Controller
 
     public function homecostumer()
     {
+        $today = date("Y-m-d");
+        $next15 = date("Y-m-d",strtotime($today."+ 15 days"));
 
-      $id = Auth::user()->id;
-
-      $client = DB::select(DB::raw("SELECT * FROM users WHERE id = $id"));
-
-      $orders = DB::select(DB::raw("SELECT
-      	orders.file_invoice,
-      	orders.nro_invoice,
-      	orders.amount_invoice,
-      	orders.created_at,
-      	users.`name`,
-      	orders.client,
-      	orders.id,
-      	points.points
-      FROM
-      	orders
-      	LEFT JOIN
-      	users
-      	ON
-      		orders.client = users.id
-      	LEFT JOIN
-      	points
-      	ON
-      		orders.id = points.order_id
-        WHERE
-        orders.client = $id"));
-
-
-      $ordercant = count($orders);
-
-
-      $totalpoints = DB::select(DB::raw("SELECT
-          points.client,
-          points.action,
-          SUM(points.points) as suma
+        $nextpayments = DB::select(DB::raw("SELECT
+          travels.client_fullname,
+          travels.client_phone,
+          travels.date_departure,
+          travels.localizador,
+          travels.id_travels
         FROM
-          points
+          travels
         WHERE
-          points.client = $id
-        GROUP BY
-          points.action,
-          points.client"));
-
-
-      $points = DB::select(DB::raw("SELECT
-          points.action,
-          points.points,
-          points.nro_invoice,
-          points.client,
-	        points.created_at
-        FROM
-          points
-        WHERE
-          points.client = $id"));
-
-      $changes = DB::select(DB::raw("SELECT
-        	changes.id_change,
-        	changes.id_client
-        FROM
-        	changes
-        WHERE
-          changes.id_client = $id"));
-
-      $changescant = count($changes);
-
-        $products = DB::select(DB::raw("SELECT * FROM products"));
-        //retorno y paso la a la vista
+          travels.passenger_order = 1
+         AND
+          travels.date_departure < '$next15'"));
         return view('homecostumer',compact(
-          'client',
-          'orders',
-          'totalpoints',
-          'ordercant',
-          'points',
-          'products',
-          'changescant'
+          'nextpayments'
         ));
     }
 
