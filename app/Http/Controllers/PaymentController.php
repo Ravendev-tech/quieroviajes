@@ -141,7 +141,7 @@ class PaymentController extends Controller
       	ON
       		travels.travel_to = destinationto.id_destination
         WHERE
-  	       travels.localizador = $id
+  	       travels.localizador = "$id"
         "));
         $amount = Travels::where('localizador', $id)->sum('travel_pvp');
         $payment = Payments::where('localizador',$id)->get();
