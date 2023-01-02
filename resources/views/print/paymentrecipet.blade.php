@@ -25,7 +25,7 @@
 
           </div>
         <div class="">
-        <form class="" action="{{route('product.store')}}" enctype="multipart/form-data" method="post">
+        <form class="" enctype="multipart/form-data" method="post">
           @csrf
           <div class="card-body p-4">
             <h5 class="card-title">Recibo N° {{$datapayment[0]->id_payments}}</h5>

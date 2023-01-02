@@ -163,7 +163,7 @@
                       </div>
                     </td>
                     <td class="col-sm-2">
-                        <input type="number" name="total1"  class="form-control " id="total1" value="{{$amount}}" required/>
+                        <input type="number" step="any" name="total1"  class="form-control " id="total1" value="{{$amount}}" required/>
                     </td>
                     <td class="col-sm-2 text-center">
                       <input type="checkbox" class="form-check-input pagado" name="status1" value="1" checked>
@@ -191,7 +191,7 @@
                       </div>
                     </td>
                     <td class="col-sm-2">
-                        <input type="number" name="total2"  class="form-control " id="total2" />
+                        <input type="number" step="any" name="total2"  class="form-control " id="total2" />
                     </td>
                     <td class="col-sm-2">
                       <!-- <button type="button" class="btn btn-outline-danger"><i class="bx bx-blanket me-0"></i></button> -->
@@ -219,7 +219,7 @@
                       </div>
                     </td>
                     <td class="col-sm-2">
-                        <input type="number" name="total3"  class="form-control " id="total3" />
+                        <input type="number" step="any" name="total3"  class="form-control " id="total3" />
                     </td>
                     <td class="col-sm-2">
                       <!-- <button type="button" class="btn btn-outline-danger"><i class="bx bx-blanket me-0"></i></button> -->
@@ -384,7 +384,7 @@
                       </select>
                     </td>
                     <td class="col-sm-2">
-                      <input type="number" name="total1" max="{{$amount - $amountpaid}}" class="form-control ">
+                      <input type="number" step="any" name="total1" max="{{$amount - $amountpaid}}" class="form-control ">
                     </td>
                     <td class="col-sm-2 text-center">
                       <input type="submit" name="" class="btn btn-primary" value="GUARDAR">
