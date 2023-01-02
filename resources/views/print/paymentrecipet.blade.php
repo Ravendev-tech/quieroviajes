@@ -54,13 +54,13 @@
               <div class="row contacts">
                 <div class="col-8 invoice-to">
                   <div class="text-gray-light">Recibo Para:</div>
-                  <h4 class="to">{{$datapayment[0]->client_fullname}}</h4>
+                  <h5 class="to">{{$datapayment[0]->client_fullname}}</h5>
                   <div class="address">Telefono: {{$datapayment[0]->client_phone}}</div>
                   <div class="email">
                   </div>
                 </div>
                 <div class="col-4 invoice-details">
-                  <h4 class="invoice-id">Recibo Nº: {{$datapayment[0]->id_payments}}</h4>
+                  <h5 class="invoice-id">Recibo Nº: {{$datapayment[0]->id_payments}}</h5>
                   <div class="date">Fecha:  <?php echo date('Y-m-d') ?> </div>
                   <div class="date"></div>
                 </div>
