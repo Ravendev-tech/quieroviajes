@@ -54,7 +54,7 @@
               <div class="row contacts">
                 <div class="col-8 invoice-to">
                   <div class="text-gray-light">Recibo Para:</div>
-                  <hh4 class="to">{{$datapayment[0]->client_fullname}}</h4>
+                  <h4 class="to">{{$datapayment[0]->client_fullname}}</h4>
                   <div class="address">Telefono: {{$datapayment[0]->client_phone}}</div>
                   <div class="email">
                   </div>
