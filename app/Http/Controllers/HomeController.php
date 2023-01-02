@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Payments;
+use App\Models\Travels;
 class HomeController extends Controller
 {
     /**
@@ -93,8 +95,14 @@ class HomeController extends Controller
         	travels.passenger_order = 1 AND
         	payments.id_payments = $id
         "));
+
+        $localizador = $datapayment[0]->localizador;
+        $payments = Payments::where('localizador',$localizador)->where('payment_status',1)->get();
+        $services = Travels::where('localizador', $localizador)->get();
+
         return view('print.paymentrecipet',compact(
-          'datapayment'
+          'datapayment',
+          'services'
         ));
     }
 

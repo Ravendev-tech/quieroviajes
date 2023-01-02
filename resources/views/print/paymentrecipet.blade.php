@@ -4,65 +4,123 @@
   *{
     font-size:14px
   }
+  .invoice table td, .invoice table th {
+    padding: 5px 15px;
+}
+
+.invoice table tfoot td {
+    padding: 4px 20px;
+    font-size: 13px;
+}
+
+.invoice table tfoot tr:last-child td {
+    color: #0d6efd;
+    font-size: 15px;
+}
+.invoice .invoice-details .invoice-id {
+    margin-top: 0;
+    color: #000000;
+}
+
+.invoice header {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000000;
+}
 </style>
 @endsection
 @section('content')
 <div class="">
-  <div class="wrapper">
-    <!--sidebar wrapper -->
-          <div class="row">
-            <div class="col-6">
-              <img src="{{url('/')}}/assets/images/logodelyar.png" width="230px"  class="" alt="logo icon">
-            </div>
-            <div class="col-6 text-end" style="">
-              Querio Caribe SL<br>
-              Av. Oporto 24, Madrid<br>
-              CIF: B88229778<br>
-              CICMA: 3892 <br>
-              Tel: 910 059 014<br>
-              CP: 28019
-            </div>
-
-          </div>
-        <div class="">
-        <form class="" enctype="multipart/form-data" method="post">
-          @csrf
-          <div class="card-body p-4">
-            <h5 class="card-title">Recibo N° {{$datapayment[0]->id_payments}}</h5>
-            <hr/>
-             <div class="form-body mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div id="invoice">
+        <div class="invoice overflow-auto">
+          <div>
+            <header>
               <div class="row">
-               <div class="col-lg-12">
-                 Hemos recibido de:  # {{$datapayment[0]->client_fullname}}  # <br>
-                 La cantidad de: <span id="text" ></span>  <br>
-                 En concepto de: ENTREGA por servicios solicitados en el expediente: #{{$datapayment[0]->id_travels}} <br>
-                 Por: {{$datapayment[0]->client_fullname}}  | {{$datapayment[0]->destfrom}} - {{$datapayment[0]->destto}} | {{$datapayment[0]->date_departure}}
-               </div>
-             </div><!--end row-->
-             <hr/>
-             <div class="row">
-               <div class="col-lg-4">
-                 importe: {{$datapayment[0]->payment_amount }}€
-               </div>
-               <div class="col-lg-4">
-                 <?php
-                 $checkpaid = App\Http\Controllers\PaymentController::checkpaid($datapayment[0]->localizador);
-                 $checktotal = App\Http\Controllers\PaymentController::checktotal($datapayment[0]->localizador);
-                 ?>
-                 importe del viaje: {{$checktotal}}€ <br>
-                 importe pendiente:  {{$checktotal - $checkpaid}}€<br>
-               </div>
-               <div class="col-lg-4">
-                 Fecha: <?php echo date('Y-m-d') ?> <br>
-                 Forma de Pago: {{$datapayment[0]->payment_method}}
-               </div>
-             </div>
-             <hr/>
+                <div class="col">
+                  <img src="{{url('/')}}/assets/images/logodelyar.png" width="230px"  class="" alt="logo icon">
+                </div>
+                <div class="col company-details">
+                  Querio Caribe SL<br>
+                  Av. Oporto 24, Madrid, CP: 28019<br>
+                  CIF: B88229778<br>
+                  CICMA: 3892 <br>
+                  Tel: 910 059 014<br>
+                </div>
+              </div>
+            </header>
+            <main>
+              <div class="row contacts">
+                <div class="col invoice-to">
+                  <div class="text-gray-light">Recibo Para:</div>
+                  <h2 class="to">{{$datapayment[0]->client_fullname}}</h2>
+                  <div class="address">Telefono: {{$datapayment[0]->client_phone}}</div>
+                  <div class="email">
+                  </div>
+                </div>
+                <div class="col invoice-details">
+                  <h3 class="invoice-id">Recibo Nº: {{$datapayment[0]->id_payments}}</h3>
+                  <div class="date">Fecha:  <?php echo date('Y-m-d') ?> </div>
+                  <div class="date"></div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-right">Servicio</th>
+                    <th class="text-end">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @forelse($services as $itemServices)
+                  <tr>
+                    <td class="">{{$itemServices->client_fullname}}</td>
+                    <td class="text-end">{{$itemServices->travel_pvp}} €</td>
+                  </tr>
+                  @empty
+                  @endforelse
+                </tbody>
+              </table>
+              <div class="notices">
+                <div class="notice">
+                  Hemos recibido de: {{$datapayment[0]->client_fullname}}
+                  la cantidad de:<b> <span id="text" ></span> <br> </b> En concepto de: ENTREGA por servicios solicitados en el expediente: N° {{$datapayment[0]->id_travels}}
+                </div>
+              </div>
+              <hr>
+              <div class="row mt-3">
+                <div class="col-4">
+                  importe: {{$datapayment[0]->payment_amount }}€
+                </div>
+                <div class="col-4">
+                  <?php
+                  $checkpaid = App\Http\Controllers\PaymentController::checkpaid($datapayment[0]->localizador);
+                  $checktotal = App\Http\Controllers\PaymentController::checktotal($datapayment[0]->localizador);
+                  ?>
+                  importe del viaje: {{$checktotal}}€ <br>
+                  importe pendiente:  {{$checktotal - $checkpaid}}€<br>
+                </div>
+                <div class="col-4">
+                  Fecha: <?php echo date('Y-m-d') ?> <br>
+                  Forma de Pago: {{$datapayment[0]->payment_method}}
+                </div>
+              </div>
+              <div class="details mt-4">
+                Revise su documentación antes de abandonar el establecimiento, la agencia no se hace responsable después de abandonar el mismo. <br>
+                -Lea los datos y condiciones del billete emitido y solicite su corrección si hubiere errores, luego no se adminte reclamaciones.<br>
+                -Nombre y apellidos, ciudad de origen, ciudad de destino, fechas del vuelo, Aerolinea y precio.<br>
+                -Todo cambio de fecha, Reembolso se solicitan personalmente, ambos tienen penalización una vez emitido el billete, según las condiciones de la aerolínea.<br>
+                -El reembolso tarda entre 45 a 60 días (aproximadamente).<br>
+                -El impago del billete origina su ANULACIÓN con la respectiva penalización que se descontara del anticipo.<br>
+                -Es obligación del pasajero conocer la documentación y requisitos necesarios para realizar su viaje (visas que solicite el país).<br>
+                -Recuerde que debe llamar a la agencia de viajes 3 días antes de su vuelo para reconfirmar el horario.<br>
+              </div>
+            </main>
           </div>
-          </div>
-        </form>
+        </div>
       </div>
-
+    </div>
   </div>
 </div>
 @endsection
@@ -269,7 +327,7 @@ var numeroALetras = (function() {
   $(document).ready(function(){
     $('#text').text(numeroALetras( <?php echo $datapayment[0]->payment_amount ?> ));
 
-    setTimeout(
+  setTimeout(
   function()
   {
     window.print();

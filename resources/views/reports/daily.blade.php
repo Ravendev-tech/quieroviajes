@@ -69,7 +69,7 @@
                 <h5 class="mb-0">pagos registrados el: {{$date}}</h5>
               </div>
               <div class="col-lg-4">
-                <input type="date" class="form-control" name="fecha1" onchange="getdaily(this.value)">
+                <input type="date" class="form-control" name="fecha1" value="{{$date}}" onchange="getdaily(this.value)">
               </div>
             </div>
             <div class="font-22 ms-auto">
@@ -85,7 +85,7 @@
                   <th>Método de pago</th>
                   <th>Monto</th>
                   <th>Usuario</th>
-                  <th>Check</th>
+                  <th class="text-center" >Check</th>
                 </tr>
               </thead>
               <tbody>
@@ -96,8 +96,7 @@
                   <td>{{$dailyItems->payment_method}}</td>
                   <td>{{$dailyItems->payment_amount}}€</td>
                   <td>{{$dailyItems->name}}</td>
-                  <td>  </td>
-                  <td></td>
+                  <td class="text-center" > <input type="checkbox" name="" value=""> </td>
                 </tr>
 
                 @empty
@@ -115,9 +114,6 @@
   <!--end overlay-->
   <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
   <!--End Back To Top Button-->
-  <footer class="page-footer">
-    <p class="mb-0">Copyright © 2021. All right reserved.</p>
-  </footer>
 </div>
 @endsection
 
