@@ -366,10 +366,10 @@
                 <tbody>
                   <tr>
                     <td class="col-sm-4">
-                        <input type="date" class="form-control" name="fecha1" >
+                        <input type="date" class="form-control" name="fecha1" required >
                     </td>
                     <td class="col-sm-4">
-                      <select class="form-select single-select" name="method1" >
+                      <select class="form-select single-select" name="method1" required >
                         <option selected value="">Forma de Pago</option>
                         <option value="Bizum - BBVA">Bizum - BBVA</option>
                         <option value="Buzum - Santander">Buzum - Santander</option>
@@ -384,7 +384,7 @@
                       </select>
                     </td>
                     <td class="col-sm-2">
-                      <input type="number" step="any" name="total1" max="{{$amount - $amountpaid}}" class="form-control ">
+                      <input type="number" step="any" name="total1" max="{{$amount - $amountpaid}}" class="form-control " required>
                     </td>
                     <td class="col-sm-2 text-center">
                       <input type="submit" name="" class="btn btn-primary" value="GUARDAR">
