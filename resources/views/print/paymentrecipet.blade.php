@@ -50,7 +50,7 @@
                  $checktotal = App\Http\Controllers\PaymentController::checktotal($datapayment[0]->localizador);
                  ?>
                  importe del viaje: {{$checktotal}}€ <br>
-                 importe pendiente:  {{$checkpaid}}€<br>
+                 importe pendiente:  {{$checktotal - $checkpaid}}€<br>
                </div>
                <div class="col-lg-4">
                  Fecha: <?php echo date('Y-m-d') ?> <br>
