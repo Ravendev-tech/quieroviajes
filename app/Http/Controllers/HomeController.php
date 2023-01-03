@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Payments;
 use App\Models\Travels;
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +28,104 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+    public function agents(Request $request)
+    {
+      if(isset($request->date1)){
+        $date1 = $request->date1;
+        $date2 = $request->date2;
+      }else{
+        $date1 = "0000-00-00";
+        $date2 = "0000-00-00";
+      }
+
+      if($request->user == 0){
+        $user = " ";
+      }else{
+        $user = "payments.id_user = $request->user AND " ;
+      }
+      $daily = DB::select(DB::raw("SELECT
+          payments.*,
+          travels.client_fullname,
+          travels.passenger_order,
+          travels.travel_pvp,
+	        travels.travel_neto,
+          users.`name`
+        FROM
+          payments
+          LEFT JOIN
+          travels
+          ON
+            payments.localizador = travels.localizador
+          LEFT JOIN
+          users
+          ON
+            payments.id_user = users.id
+        WHERE
+            $user
+            travels.passenger_order = 1 AND
+            payments.payment_status = 1 AND
+            (payments.updated_at >= '$date1' AND payments.updated_at <= '$date2')
+      "));
+
+
+      $cantservicios = DB::select(DB::raw("SELECT
+        	COUNT(travels.client_fullname) as servicios
+        FROM
+        	payments
+        	LEFT JOIN
+        	travels
+        	ON
+        		payments.localizador = travels.localizador
+        	LEFT JOIN
+        	users
+        	ON
+        		payments.id_user = users.id
+        WHERE
+          $user
+        	travels.passenger_order = 1 AND
+        	payments.payment_status = 1 AND
+        	(
+        		payments.updated_at >= '$date1' AND
+        		payments.updated_at <= '$date2'
+        	)
+      "));
+
+      $totales = DB::select(DB::raw("SELECT
+        	SUM(travels.travel_pvp) AS totalpvp,
+        	SUM(travels.travel_neto) AS totalneto
+        FROM
+        	payments
+        	LEFT JOIN
+        	travels
+        	ON
+        		payments.localizador = travels.localizador
+        	LEFT JOIN
+        	users
+        	ON
+        		payments.id_user = users.id
+        WHERE
+          $user
+        	travels.passenger_order = 1 AND
+        	payments.payment_status = 1 AND
+        	(
+            payments.updated_at >= '$date1' AND
+        		payments.updated_at <= '$date2'
+        	)
+      "));
+
+
+
+      $users = User::get();
+      return view('reports.agents',compact(
+        'daily',
+        'users',
+        'cantservicios',
+        'totales'
+      ));
+    }
+
 
     public function daily($id)
     {
@@ -65,6 +164,7 @@ class HomeController extends Controller
     {
         $paymentid = $request->idpayment;
         $checkpayment = Payments::findorfail($paymentid);
+
         if(is_null($checkpayment->payments_checked) or $checkpayment->payments_checked == 0 ){
           $setval = 1;
         }else{
@@ -114,6 +214,7 @@ class HomeController extends Controller
         $localizador = $datapayment[0]->localizador;
         $payments = Payments::where('localizador',$localizador)->where('payment_status',1)->get();
         $services = Travels::where('localizador', $localizador)->get();
+
 
         return view('print.paymentrecipet',compact(
           'datapayment',

@@ -73,6 +73,13 @@
         <div class="menu-title">Reporte Diario</div>
       </a>
     </li>
+    <li>
+        <a href="{{route('agents')}}" class="">
+        <div class="parent-icon"><i class="fadeIn animated bx bx-bar-chart"></i>
+        </div>
+        <div class="menu-title">Reporte de Agentes</div>
+      </a>
+    </li>
     <!-- <li>
       <a href="#" class="">
         <div class="parent-icon"><i class="lni lni-ticket-alt"></i>

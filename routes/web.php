@@ -94,6 +94,9 @@ Route::middleware(['auth','user-role:1'])->group(function(){
 
   Route::get('/daily/{id}', [HomeController::class, 'daily'])->name('daily');
   Route::post('/checkdaily/', [HomeController::class, 'checkdaily'])->name('checkdaily');
+  
+  Route::get('/agents/', [HomeController::class, 'agents'])->name('agents');
+  Route::post('/agents/', [HomeController::class, 'agents'])->name('agents');
 });
 
 
