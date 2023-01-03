@@ -91,7 +91,9 @@ Route::middleware(['auth','user-role:1'])->group(function(){
   Route::get('/user-edit/{id}', [ClientsController::class, 'edit'])->name('clients.edit');
   Route::patch('/user-update/{id}', [ClientsController::class, 'update'])->name('clients.update');
   Route::get('/user-destroy/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
   Route::get('/daily/{id}', [HomeController::class, 'daily'])->name('daily');
+  Route::post('/checkdaily/', [HomeController::class, 'checkdaily'])->name('checkdaily');
 });
 
 

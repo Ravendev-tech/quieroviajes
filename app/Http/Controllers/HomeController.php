@@ -60,6 +60,21 @@ class HomeController extends Controller
 
     }
 
+    // update checked status
+    public function checkdaily(Request $request)
+    {
+        $paymentid = $request->idpayment;
+        $checkpayment = Payments::findorfail($paymentid);
+        if(is_null($checkpayment->payments_checked) or $checkpayment->payments_checked == 0 ){
+          $setval = 1;
+        }else{
+          $setval = 0;
+        };
+        $checkpayment->update([
+          'payments_checked'  => $setval,
+        ]);
+    }
+
 
 
 

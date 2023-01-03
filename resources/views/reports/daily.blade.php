@@ -1,74 +1,30 @@
 @extends('layouts.app')
+@section('css')
+<style media="screen">
+@media print {
+  .sidebar-wrapper.no-print, .imprimir, .btn-primary, .btn {
+    display: none !important;
+}
+.page-wrapper {
+    margin-left: 0;
+  }
+}
+</style>
+@endsection
 @section('content')
 <div class="wrapper">
   <!--sidebar wrapper -->
 @include('partials.sidebar')
-  <!--end sidebar wrapper -->
-  <!--start header -->
-  <!--end header -->
-  <!--start page wrapper -->
   <div class="page-wrapper">
     <div class="page-content">
-      <!-- <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-        <div class="col">
-          <div class="card radius-10">
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div>
-                  <p class="mb-0 text-secondary">Ventas en el mes</p>
-                  <h4 class="my-1">4805 €</h4>
-                </div>
-                <div class="widgets-icons bg-light-success text-success ms-auto"><i class='bx bxs-wallet'></i>
-                </div>
-              </div>
-              <div id="chart1"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card radius-10">
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div>
-                  <p class="mb-0 text-secondary">Total por cobrar</p>
-                  <h4 class="my-1">8.4K</h4>
-                </div>
-                <div class="widgets-icons bg-light-warning text-warning ms-auto"><i class='bx bxs-group'></i>
-                </div>
-              </div>
-              <div id="chart2"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card radius-10">
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div>
-                  <p class="mb-0 text-secondary">Pasajes vendidos</p>
-                  <h4 class="my-1">800</h4>
-                </div>
-                <div class="widgets-icons bg-light-danger text-danger ms-auto"><i class='bx bxs-binoculars'></i>
-                </div>
-              </div>
-              <div id="chart3"></div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!--end row-->
-      <!--end row-->
-      <!--end row-->
-      <!--end row-->
-      <!--end row-->
       <div class="card radius-10">
         <div class="card-body">
           <div class="">
             <div class="row" >
-              <div class="col-lg-4">
-                <h5 class="mb-0">pagos registrados el: {{$date}}</h5>
+              <div class="col-6">
+                <h5 class="mb-0 mt-2">pagos registrados el: {{$date}}</h5>
               </div>
-              <div class="col-lg-4">
+              <div class="col-6">
                 <input type="date" class="form-control" name="fecha1" value="{{$date}}" onchange="getdaily(this.value)">
               </div>
             </div>
@@ -96,13 +52,16 @@
                   <td>{{$dailyItems->payment_method}}</td>
                   <td>{{$dailyItems->payment_amount}}€</td>
                   <td>{{$dailyItems->name}}</td>
-                  <td class="text-center" > <input type="checkbox" name="" value=""> </td>
+                  <td class="text-center" > <input <?php if($dailyItems->payments_checked == 1){echo "checked";}  ?> type="checkbox" name="" value="{{$dailyItems->id_payments}}" onclick="sendcheck(this.value)">  </td>
                 </tr>
 
                 @empty
                 @endforelse
               </tbody>
             </table>
+            <div class="text-end mt-4">
+              <button type="button" name="button" class="imprimir btn btn-primary " onclick="window.print();return false;">IMPRIMIR</button>
+            </div>
           </div>
         </div>
       </div>
@@ -121,7 +80,34 @@
 <script type="text/javascript">
   function getdaily(val){
     console.log(val)
-    window.location.href = 'http://127.0.0.1:8000/daily/'+val;
+    window.location.href = '{{url('/')}}/daily/'+val;
   }
+
+
+
+function sendcheck(id) {
+    var token = '{{csrf_token()}}';
+    var idpayment = id;
+    var data={idpayment:idpayment,_token:token};
+    $.ajax({
+       type:'post',
+       url:"{{route('checkdaily')}}",
+       data: data,
+       success: function(data){
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 @endsection
