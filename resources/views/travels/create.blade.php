@@ -83,16 +83,16 @@
                 <tbody>
                   <tr>
                     <td class="col-sm-5">
-                        <input type="text" name="name1" class="form-control" id="name1" onclick="pastetext('name1')" required />
+                        <input type="text" name="name1" class="form-control" id="name1" onclick="" required />
                     </td>
                     <td class="col-sm-3">
-                        <input type="text" name="phone1"  class="form-control" id="phone1" onclick="pastetext('phone1')" required/>
+                        <input type="text" name="phone1"  class="form-control" id="phone1" onclick="" required/>
                     </td>
                     <td class="col-sm-2">
-                      <input type="number" step="any" name="neto1"  class="form-control suma" id="neto1" onclick="pastetext('neto1')" onchange="suma(this.value)" required/>
+                      <input type="number" step="any" name="neto1"  class="form-control suma" id="neto1" onclick="" onchange="suma(this.value)" required/>
                     </td>
                     <td class="col-sm-2">
-                          <input type="number" step="any" name="pvp1"  class="form-control suma" id="pvp1" onclick="pastetext('pvp1')" onchange="suma(this.value)" required/>
+                          <input type="number" step="any" name="pvp1"  class="form-control suma" id="pvp1" onclick="" onchange="suma(this.value)" required/>
                     </td>
                     <td class="col-sm-2"><a class="deleteRow"></a>
 
@@ -138,10 +138,10 @@
       var newRow = $("<tr>");
       var cols = "";
 
-      cols += '<td><input type="text" class="form-control" name="name' + counter + '" id="name' + counter + '" onclick="pastetext(\'name'+counter+'\')"/></td>';
-      cols += '<td><input type="text" class="form-control" name="phone' + counter + '" id="phone' + counter + '"onclick="pastetext(\'phone'+counter+'\')"/></td>';
-      cols += '<td><input type="number" step="any" class="form-control suma" onchange="suma(this.value)" name="neto' + counter + '" id="neto' + counter + '"onclick="pastetext(\'amount'+counter+'\');suma(this.value)"/></td>';
-      cols += '<td><input type="number" step="any" class="form-control suma" onchange="suma(this.value)" name="pvp' + counter + '" id="pvp' + counter + '"onclick="pastetext(\'amount'+counter+'\');suma(this.value)"/></td>';
+      cols += '<td><input type="text" class="form-control" name="name' + counter + '" id="name' + counter + '" onclick=""/></td>';
+      cols += '<td><input type="text" class="form-control" name="phone' + counter + '" id="phone' + counter + '"onclick=""/></td>';
+      cols += '<td><input type="number" step="any" class="form-control suma" onchange="suma(this.value)" name="neto' + counter + '" id="neto' + counter + '"onclick=""/></td>';
+      cols += '<td><input type="number" step="any" class="form-control suma" onchange="suma(this.value)" name="pvp' + counter + '" id="pvp' + counter + '"onclick=""/></td>';
       cols += '<td><button type="button" class="ibtnDel btn btn-outline-danger"><i class="fadeIn animated bx bx-trash"></i></button></td>';
       newRow.append(cols);
       $("table.order-list").append(newRow);

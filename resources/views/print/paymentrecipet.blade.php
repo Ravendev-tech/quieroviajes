@@ -110,7 +110,7 @@ html {
                   importe pendiente:  {{$checktotal - $checkpaid}}€<br>
                 </div>
                 <div class="col-4">
-                  Fecha: <?php echo date('Y-m-d') ?> <br>
+                  Cancelación por pasajero: <?php echo date('Y-m-d') ?> <br>
                   Forma de Pago: {{$datapayment[0]->payment_method}}
                 </div>
               </div>
