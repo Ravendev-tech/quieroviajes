@@ -68,7 +68,7 @@ html {
                   </div>
                 </div>
                 <div class="col-4 invoice-details">
-                  <h5 class="invoice-id">Recibo Nº: {{$datapayment[0]->id_payments}}</h5>
+                  <h5 class="invoice-id">Expediente Nº: {{$datapayment[0]->id_travels}}</h5>
                   <div class="date">Fecha:  <?php echo date('Y-m-d') ?> </div>
                   <div class="date"></div>
                 </div>
