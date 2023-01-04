@@ -27,12 +27,16 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #000000;
 }
+
+.card {
+    box-shadow: none !important;
+}
 </style>
 @endsection
 @section('content')
 <div class="">
-  <div class="card">
-    <div class="card-body">
+  <div class="">
+    <div class="">
       <div id="invoice">
         <div class="invoice overflow-auto">
           <div>
@@ -115,6 +119,8 @@
                 -El impago del billete origina su ANULACIÓN con la respectiva penalización que se descontara del anticipo.<br>
                 -Es obligación del pasajero conocer la documentación y requisitos necesarios para realizar su viaje (visas que solicite el país).<br>
                 -Recuerde que debe llamar a la agencia de viajes 3 días antes de su vuelo para reconfirmar el horario.<br>
+                <br><br>
+                Firma y Sello.
               </div>
             </main>
           </div>
