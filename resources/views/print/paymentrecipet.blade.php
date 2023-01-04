@@ -8,6 +8,10 @@
     padding: 5px 15px;
 }
 
+html {
+    background: #FFF !important;
+}
+
 .invoice table tfoot td {
     padding: 4px 20px;
     font-size: 13px;

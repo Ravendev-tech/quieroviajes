@@ -92,4 +92,8 @@ ul#menu i {
        transform: scale(.9);
     }
 
+    html {
+    background: #FFF;
+}
+
 }
