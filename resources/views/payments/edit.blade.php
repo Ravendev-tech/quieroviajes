@@ -150,14 +150,14 @@
                         <select class="form-select single-select" name="method1" required>
                           <option selected value="">Forma de Pago</option>
                           <option value="Bizum - BBVA">Bizum - BBVA</option>
-                          <option value="Buzum - Santander">Buzum - Santander</option>
-                          <option value="Trasnferencia Santander">Trasnferencia Santander</option>
+                          <option value="Bizum - SANTANDER">Bizum - SANTANDER</option>
+                          <option value="Transferencia SANTANDER">Transferencia SANTANDER</option>
                           <option value="Transferencia BBVA">Transferencia BBVA</option>
-                          <option value="Transferencia CAIXA BANK">Transferencia CAIXA BANK</option>
+                          <option value="Transferencia CAIXABANK">Transferencia CAIXA BANK</option>
                           <option value="Transferencia Banco Popular Dominicano">Transferencia Banco Popular Dominicano</option>
-                          <option value="Trajeta Santander">Trajeta Santander</option>
+                          <option value="Tarjeta SANTANDER">Tarjeta SANTANDER</option>
                           <option value="Tarjeta BBVA">Tarjeta BBVA</option>
-                          <option value="Tarjeta CAIZA bank Fisico">Tarjeta CAIZA bank Fisico</option>
+                          <option value="Tarjeta CAIXABANK Fisico">Tarjeta CAIXABANK Fisico</option>
                           <option value="Efectivo">Efectivo</option>
                         </select>
                       </div>
@@ -178,14 +178,14 @@
                         <select class="form-select single-select" name="method2" >
                           <option selected value="">Forma de Pago</option>
                           <option value="Bizum - BBVA">Bizum - BBVA</option>
-                          <option value="Buzum - Santander">Buzum - Santander</option>
-                          <option value="Trasnferencia Santander">Trasnferencia Santander</option>
+                          <option value="Bizum - SANTANDER">Bizum - SANTANDER</option>
+                          <option value="Transferencia SANTANDER">Transferencia SANTANDER</option>
                           <option value="Transferencia BBVA">Transferencia BBVA</option>
-                          <option value="Transferencia CAIXA BANK">Transferencia CAIXA BANK</option>
+                          <option value="Transferencia CAIXABANK">Transferencia CAIXA BANK</option>
                           <option value="Transferencia Banco Popular Dominicano">Transferencia Banco Popular Dominicano</option>
-                          <option value="Trajeta Santander">Trajeta Santander</option>
+                          <option value="Tarjeta SANTANDER">Tarjeta SANTANDER</option>
                           <option value="Tarjeta BBVA">Tarjeta BBVA</option>
-                          <option value="Tarjeta CAIZA bank Fisico">Tarjeta CAIZA bank Fisico</option>
+                          <option value="Tarjeta CAIXABANK Fisico">Tarjeta CAIXABANK Fisico</option>
                           <option value="Efectivo">Efectivo</option>
                         </select>
                       </div>
@@ -206,14 +206,14 @@
                         <select class="form-select single-select" name="method3" >
                           <option selected value="">Forma de Pago</option>
                           <option value="Bizum - BBVA">Bizum - BBVA</option>
-                          <option value="Buzum - Santander">Buzum - Santander</option>
-                          <option value="Trasnferencia Santander">Trasnferencia Santander</option>
+                          <option value="Bizum - SANTANDER">Bizum - SANTANDER</option>
+                          <option value="Transferencia SANTANDER">Transferencia SANTANDER</option>
                           <option value="Transferencia BBVA">Transferencia BBVA</option>
-                          <option value="Transferencia CAIXA BANK">Transferencia CAIXA BANK</option>
+                          <option value="Transferencia CAIXABANK">Transferencia CAIXA BANK</option>
                           <option value="Transferencia Banco Popular Dominicano">Transferencia Banco Popular Dominicano</option>
-                          <option value="Trajeta Santander">Trajeta Santander</option>
+                          <option value="Tarjeta SANTANDER">Tarjeta SANTANDER</option>
                           <option value="Tarjeta BBVA">Tarjeta BBVA</option>
-                          <option value="Tarjeta CAIZA bank Fisico">Tarjeta CAIZA bank Fisico</option>
+                          <option value="Tarjeta CAIXABANK Fisico">Tarjeta CAIXABANK Fisico</option>
                           <option value="Efectivo">Efectivo</option>
                         </select>
                       </div>
@@ -372,14 +372,14 @@
                       <select class="form-select single-select" name="method1" required >
                         <option selected value="">Forma de Pago</option>
                         <option value="Bizum - BBVA">Bizum - BBVA</option>
-                        <option value="Buzum - Santander">Buzum - Santander</option>
-                        <option value="Trasnferencia Santander">Trasnferencia Santander</option>
+                        <option value="Bizum - SANTANDER">Bizum - SANTANDER</option>
+                        <option value="Transferencia SANTANDER">Transferencia SANTANDER</option>
                         <option value="Transferencia BBVA">Transferencia BBVA</option>
-                        <option value="Transferencia CAIXA BANK">Transferencia CAIXA BANK</option>
+                        <option value="Transferencia CAIXABANK">Transferencia CAIXA BANK</option>
                         <option value="Transferencia Banco Popular Dominicano">Transferencia Banco Popular Dominicano</option>
-                        <option value="Trajeta Santander">Trajeta Santander</option>
+                        <option value="Tarjeta SANTANDER">Tarjeta SANTANDER</option>
                         <option value="Tarjeta BBVA">Tarjeta BBVA</option>
-                        <option value="Tarjeta CAIZA bank Fisico">Tarjeta CAIZA bank Fisico</option>
+                        <option value="Tarjeta CAIXABANK Fisico">Tarjeta CAIXABANK Fisico</option>
                         <option value="Efectivo">Efectivo</option>
                       </select>
                     </td>
