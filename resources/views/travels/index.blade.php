@@ -34,13 +34,15 @@
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-          <table id="example" class="table table-striped table-bordered">
+          <table id="example2" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Localizador</th>
                 <th>Persona</th>
                 <th>Fecha de Salida</th>
+                <th>Saldo</th>
+                <th>Agente</th>
                 <th>Editar</th>
                 <th>pagos</th>
                 <th>Borrar</th>
@@ -53,6 +55,14 @@
                 <td>{{$expedientesItem->localizador}}</td>
                 <td>{{$expedientesItem->client_fullname}}</td>
                 <td>{{$expedientesItem->date_departure}}</td>
+                <td>
+                  <?php
+                  $checkpaid = App\Http\Controllers\PaymentController::checkpaid($expedientesItem->localizador);
+                  $checktotal = App\Http\Controllers\PaymentController::checktotal($expedientesItem->localizador);
+                  ?>
+                  {{$checktotal - $checkpaid}}€
+                </td>
+                <td>{{$expedientesItem->name}}</td>
                 <th><a href="{{route('travels.edit',$expedientesItem->localizador)}}"><i class="lni lni-pencil-alt"></i></a> </th>
                 <th>
                   @if(is_null($expedientesItem->localizador_val))
@@ -73,4 +83,18 @@
   </div>
 </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+
+$(document).ready(function() {
+$('#example2').DataTable({
+  order: [[4, 'desc']],
+  "pageLength": 50,
+  "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+  }
+});
+} );
+</script>
 @endsection

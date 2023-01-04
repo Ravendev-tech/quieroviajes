@@ -30,13 +30,15 @@
 							<label class="form-label">Fecha de Salida:</label>
 							<input type="date" class="form-control" value="{{$expediente[0]->date_departure}}" name="date_departure" required>
             </div>
-            @if(!empty($expediente[0]->date_arrival))
+
             <div class="col-md-4">
+              @if(!empty($expediente[0]->date_arrival))
               <label class="form-label">Fecha de Regreso:</label>
               <input type="date" class="form-control" name="date_arrival" value="{{$expediente[0]->date_arrival}}">
+              @else
+              @endif
             </div>
-            @else
-            @endif
+
 
 
             <div class="col-lg-4 mt-4">

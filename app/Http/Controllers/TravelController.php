@@ -22,17 +22,23 @@ class TravelController extends Controller
       	travels.id_travels,
       	travels.localizador,
       	travels.client_fullname,
-      	travels.date_departure
+      	travels.date_departure,
+      	users.`name`
       FROM
       	travels
       	LEFT JOIN
       	payments
       	ON
       		travels.localizador = payments.localizador
+      	LEFT JOIN
+      	users
+      	ON
+      		travels.id_user = users.id
       WHERE
       	travels.passenger_order = 1
       GROUP BY
       	localizador_val,
+        users.`name`,
       	travels.id_travels,
       	travels.localizador,
       	travels.client_fullname,
