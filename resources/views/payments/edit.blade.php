@@ -36,18 +36,24 @@
               <p>{{$datatravel[0]->date_arrival}}</p>
             </div>
 
-            <div class="col-lg-6 mt-4">
+            <div class="col-lg-4 mt-4">
               <div class="mb-3">
                 <p><b>Origen:</b></p>
                 <p>{{$datatravel[0]->destinationfrom}}</p>
                 </div>
              </div>
-             <div class="col-lg-6  mt-4">
+             <div class="col-lg-4  mt-4">
                <div class="mb-3">
                  <p><b>Destino:</b></p>
                  <p>{{$datatravel[0]->destinationto}}</p>
                  </div>
               </div>
+              <div class="col-lg-4  mt-4">
+                <div class="mb-3">
+                  <p><b>Costo de Cancelacion:</b></p>
+                  <p>{{$datatravel[0]->travel_cancelacion}} €</p>
+                  </div>
+               </div>
 
             <div class="col-12">
               <p><b>Observaciones:</b></p>

@@ -190,6 +190,8 @@ class HomeController extends Controller
         	travels.client_phone,
         	travels.id_travels,
         	travels.date_departure,
+          travels.travel_cancelacion,
+          travels.date_arrival,
         	destfrom.name_destination AS destfrom,
         	destto.name_destination AS destto
         FROM
@@ -214,11 +216,13 @@ class HomeController extends Controller
         $localizador = $datapayment[0]->localizador;
         $payments = Payments::where('localizador',$localizador)->where('payment_status',1)->get();
         $services = Travels::where('localizador', $localizador)->get();
+        $hitos = Payments::where('localizador',$localizador)->where('payment_status',2)->get();
 
 
         return view('print.paymentrecipet',compact(
           'datapayment',
-          'services'
+          'services',
+          'hitos'
         ));
     }
 

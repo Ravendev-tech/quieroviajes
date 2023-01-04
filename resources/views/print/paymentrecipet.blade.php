@@ -97,6 +97,34 @@ html {
                 </div>
               </div>
               <hr>
+              <div class="row">
+                <div class="col-4">
+                  <h6>Próximos Pagos</h6>
+                  <table>
+                    <tr>
+                      <td>Fecha</td>
+                      <td>Monto</td>
+                    </tr>
+                      @forelse($hitos as $itemHitos)
+                    <tr>
+                      <td class="">{{$itemHitos->payment_date}}</td>
+                      <td class="">{{$itemHitos->payment_amount}} €</td>
+                    </tr>
+                    @empty
+                    @endforelse
+                  </table>
+                </div>
+              </div>
+              <hr>
+              <div class="row  mt-3">
+                <div class="col-4">
+                  Origen:{{$datapayment[0]->destfrom}} <br>  Destino: {{$datapayment[0]->destto}}
+                </div>
+                <div class="col-4">
+                  Salida:  {{$datapayment[0]->date_departure}} <br>  Regreso: {{$datapayment[0]->date_arrival}}
+                </div>
+              </div>
+              <hr>
               <div class="row mt-3">
                 <div class="col-4">
                   importe: {{$datapayment[0]->payment_amount }}€
@@ -110,10 +138,11 @@ html {
                   importe pendiente:  {{$checktotal - $checkpaid}}€<br>
                 </div>
                 <div class="col-4">
-                  Cancelación por pasajero: <?php echo date('Y-m-d') ?> <br>
+                  Cancelación por pasajero: {{$datapayment[0]->travel_cancelacion}}€ <br>
                   Forma de Pago: {{$datapayment[0]->payment_method}}
                 </div>
               </div>
+              <hr>
               <div class="details mt-4">
                 Revise su documentación antes de abandonar el establecimiento, la agencia no se hace responsable después de abandonar el mismo. <br>
                 -Lea los datos y condiciones del billete emitido y solicite su corrección si hubiere errores, luego no se adminte reclamaciones.<br>
@@ -340,8 +369,8 @@ var numeroALetras = (function() {
   setTimeout(
   function()
   {
-    window.print();
-  }, 1000);
+    // window.print();
+  }, 1500);
   });
 </script>
 @endsection

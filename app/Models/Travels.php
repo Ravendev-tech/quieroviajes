@@ -21,6 +21,7 @@ class Travels extends Model
       'travel_type',
       'travel_from',
       'travel_to',
+      'travel_cancelacion',
       'travel_pvp',
       'travel_neto',
       'travel_details',

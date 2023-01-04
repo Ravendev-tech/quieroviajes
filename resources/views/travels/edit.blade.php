@@ -39,7 +39,7 @@
             @endif
 
 
-            <div class="col-lg-6 mt-4">
+            <div class="col-lg-4 mt-4">
               <div class="mb-3">
                   <label class="form-label">Origen</label>
                   <div class="input-group">
@@ -53,7 +53,7 @@
                   </div>
                 </div>
              </div>
-             <div class="col-lg-6  mt-4">
+             <div class="col-lg-4  mt-4">
                <div class="mb-3">
                    <label class="form-label">Destino</label>
                    <div class="input-group">
@@ -66,6 +66,10 @@
                      </select>
                    </div>
                  </div>
+              </div>
+              <div class="col-md-4 mt-4">
+                <label for="inputFirstName"  class="form-label">Costo de cancelación</label>
+                <input type="number"  class="form-control" id="cancelacion" name="travel_cancelacion" value="{{$expediente[0]->travel_cancelacion}}"  required>
               </div>
 
             <div class="col-12">
@@ -92,7 +96,7 @@
                         <input type="text" name="" class="form-control" id="name{{$i}}"  value="{{$expedienteItem->client_fullname}}" required />
                     </td>
                     <td class="col-sm-3">
-                        <input type="text" name=""  class="form-control" id="phone{{$i}}"  value="{{$expedienteItem->client_phone}}" required/>
+                        <input type="text" name=""  class="form-control" id="phone{{$i}}"  value="{{$expedienteItem->client_phone}}" />
                     </td>
                     <td class="col-sm-2">
                         <input type="number" step="any" name=""  class="form-control suma" id="neto{{$i}}" onchange="suma(this.value)" value="{{$expedienteItem->travel_neto}}" required/>

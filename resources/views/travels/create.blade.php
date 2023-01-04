@@ -35,7 +35,7 @@
 							<input type="date" class="form-control" name="date_arrival">
             </div>
 
-            <div class="col-lg-6 mt-4">
+            <div class="col-lg-4 mt-4">
               <div class="mb-3">
                   <label class="form-label">Origen</label>
                   <div class="input-group">
@@ -49,7 +49,7 @@
                   </div>
                 </div>
              </div>
-             <div class="col-lg-6  mt-4">
+             <div class="col-lg-4  mt-4">
                <div class="mb-3">
                    <label class="form-label">Destino</label>
                    <div class="input-group">
@@ -62,6 +62,10 @@
                      </select>
                    </div>
                  </div>
+              </div>
+              <div class="col-md-4 mt-4">
+                <label for="inputFirstName"  class="form-label">Costo de cancelación</label>
+                <input type="number"  class="form-control" id="cancelacion" name="travel_cancelacion"  required>
               </div>
 
             <div class="col-12">
