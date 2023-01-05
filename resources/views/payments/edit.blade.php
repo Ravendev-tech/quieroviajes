@@ -372,7 +372,7 @@
                 <tbody>
                   <tr>
                     <td class="col-sm-4">
-                        <input type="date" disabled class="form-control" name="fecha1" required >
+                        <input type="date" disabled class="form-control" name="fecha1" value="<?php echo date("Y-m-d") ?>" required>
                     </td>
                     <td class="col-sm-4">
                       <select class="form-select single-select" name="method1" required >
