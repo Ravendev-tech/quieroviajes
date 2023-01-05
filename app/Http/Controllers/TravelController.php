@@ -211,8 +211,8 @@ ON
      */
     public function destroy($id)
     {
-      $travels = DB::select(DB::raw("DELETE FROM travels  WHERE localizador = $id"));
-      $payments = DB::select(DB::raw("DELETE FROM payments  WHERE localizador = $id"));
+      $travels = DB::select(DB::raw("DELETE FROM travels  WHERE localizador = '$id'"));
+      $payments = DB::select(DB::raw("DELETE FROM payments  WHERE localizador = '$id'"));
       return redirect()->back()->with(['Registro eliminado correctamente', 'Registro eliminado correctamente']);
     }
 }
