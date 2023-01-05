@@ -38,7 +38,10 @@
                 <th>Fecha de Salida</th>
                 <th>Editar</th>
                 <th>pagos</th>
+                @if((Auth::user()->user_level) == 1)
                 <th>Borrar</th>
+                @else
+                @endif
               </tr>
             </thead>
             <tbody>
@@ -50,7 +53,10 @@
                 <td>{{$expedientesItem->date_departure}}</td>
                 <th><a href="{{route('product.edit',$expedientesItem->localizador)}}"><i class="lni lni-pencil-alt"></i></a> </th>
                 <th><a href="{{route('product.edit',$expedientesItem->localizador)}}"><i class="lni lni-money-location"></i></a> </th>
+                @if((Auth::user()->user_level) == 1)
                 <th><a href="{{route('product.destroy',$expedientesItem->localizador)}}"><i class="lni lni-trash"></i></a> </th>
+                @else
+                @endif
               </tr>
               @empty
               @endforelse

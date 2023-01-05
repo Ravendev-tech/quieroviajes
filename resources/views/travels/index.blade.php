@@ -45,7 +45,10 @@
                 <th>Agente</th>
                 <th>Editar</th>
                 <th>pagos</th>
+                @if((Auth::user()->user_level) == 1)
                 <th>Borrar</th>
+                @else
+                @endif
               </tr>
             </thead>
             <tbody>
@@ -71,7 +74,10 @@
                   <a href="{{route('payment.edit',$expedientesItem->localizador)}}"><i class="lni lni-wallet"></i></a>
                   @endif
                 </th>
+                @if((Auth::user()->user_level) == 1)
                 <th><a href="{{route('travels.destroy',$expedientesItem->localizador)}}"><i class="lni lni-trash"></i></a> </th>
+                @else
+                @endif
               </tr>
               @empty
               @endforelse

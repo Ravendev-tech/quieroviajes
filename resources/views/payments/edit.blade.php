@@ -177,7 +177,7 @@
                   </tr>
                   <tr id="rowpago2" style="display:none">
                     <td class="col-sm-4">
-                        <input type="date" class="form-control" name="fecha2" id="fecha2" onchange="validafecha2(this.value)" >
+                        <input type="date" class="form-control" name="fecha2" id="fecha2" onchange="validafecha2(this.value)" min="<?php echo date("Y-m-d") ?>" >
                     </td>
                     <td class="col-sm-4">
                       <div class="input-group">
