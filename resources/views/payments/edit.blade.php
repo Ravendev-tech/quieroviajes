@@ -149,7 +149,7 @@
                 <tbody>
                   <tr>
                     <td class="col-sm-4">
-                        <input type="date" class="form-control" name="fecha1" id="fecha1" onchange="validafecha1(this.value)">
+                        <input type="date" class="form-control" name="fecha1" id="fecha1" value="<?php echo date("Y-m-d") ?> " onchange="validafecha1(this.value)" readonly >
                     </td>
                     <td class="col-sm-4">
                       <div class="input-group">
@@ -372,7 +372,7 @@
                 <tbody>
                   <tr>
                     <td class="col-sm-4">
-                        <input type="date" disabled class="form-control" name="fecha1" value="<?php echo date("Y-m-d") ?>" required>
+                        <input type="date" readonly   class="form-control" name="fecha1" value="<?php echo date("Y-m-d") ?>" required >
                     </td>
                     <td class="col-sm-4">
                       <select class="form-select single-select" name="method1" required >
