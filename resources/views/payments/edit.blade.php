@@ -205,7 +205,7 @@
                   </tr>
                   <tr id="rowpago3" style="display:none">
                     <td class="col-sm-4">
-                        <input type="date" class="form-control" name="fecha3" id="fecha3" onchange="validafecha3(this.value)" >
+                        <input type="date" class="form-control" name="fecha3" id="fecha3" onchange="validafecha3(this.value)"  min="<?php echo date("Y-m-d") ?>">
                     </td>
                     <td class="col-sm-4">
                       <div class="input-group">
