@@ -80,6 +80,8 @@ Auth::routes();
   Route::get('/destination-destroy/{id}', [DestinationsController::class, 'destroy'])->name('destination.destroy');
 
 
+  Route::get('/checkclient/{id}', [HomeController::class, 'checkclient'])->name('checkclient');
+
 
 
 // routes for admins (1 admin, 2 vendor, 3 costumer)
@@ -94,7 +96,7 @@ Route::middleware(['auth','user-role:1'])->group(function(){
 
   Route::get('/daily/{id}', [HomeController::class, 'daily'])->name('daily');
   Route::post('/checkdaily/', [HomeController::class, 'checkdaily'])->name('checkdaily');
-  
+
   Route::get('/agents/', [HomeController::class, 'agents'])->name('agents');
   Route::post('/agents/', [HomeController::class, 'agents'])->name('agents');
 });

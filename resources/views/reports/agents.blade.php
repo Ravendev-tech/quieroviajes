@@ -69,13 +69,12 @@
                 @forelse($daily as $dailyItems)
                 <tr>
                   <td>{{$dailyItems->created_at}}</td>
-                  <td>{{$dailyItems->client_fullname}}</td>
+                  <td> <?php echo App\Http\Controllers\HomeController::checkclient($dailyItems->localizador); ?> </td>
                   <td>{{$dailyItems->payment_method}}</td>
-                  <td>{{$dailyItems->travel_neto}}€</td>
-                  <td>{{$dailyItems->travel_pvp}}€</td>
-                  <td>{{$dailyItems->travel_pvp - $dailyItems->travel_neto}}€</td>
+                  <td>{{$dailyItems->neto}}€</td>
+                  <td>{{$dailyItems->pvp}}€</td>
+                  <td>{{$dailyItems->pvp - $dailyItems->neto}}€</td>
                   <td>{{$dailyItems->name}}</td>
-                  <!-- <td class="text-center" > <input <?php // if($dailyItems->payments_checked == 1){echo "checked";}  ?> type="checkbox" name="" value="{{$dailyItems->id_payments}}" onclick="sendcheck(this.value)">  </td> -->
                 </tr>
 
                 @empty

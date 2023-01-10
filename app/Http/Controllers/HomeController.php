@@ -46,27 +46,33 @@ class HomeController extends Controller
         $user = "payments.id_user = $request->user AND " ;
       }
       $daily = DB::select(DB::raw("SELECT
-          payments.*,
-          travels.client_fullname,
-          travels.passenger_order,
-          travels.travel_pvp,
-	        travels.travel_neto,
-          users.`name`
+        	SUM(travels.travel_pvp) AS pvp,
+        	SUM(travels.travel_neto) AS neto,
+        	users.`name`,
+        	payments.created_at,
+        	payments.payment_method,
+        	payments.localizador,
+        	payments.id_user
         FROM
-          payments
-          LEFT JOIN
-          travels
-          ON
-            payments.localizador = travels.localizador
-          LEFT JOIN
-          users
-          ON
-            payments.id_user = users.id
+        	payments
+        	LEFT JOIN
+        	travels
+        	ON
+        		payments.localizador = travels.localizador
+        	LEFT JOIN
+        	users
+        	ON
+        		payments.id_user = users.id
         WHERE
             $user
-            travels.passenger_order = 1 AND
             payments.payment_status = 1 AND
             (payments.updated_at >= '$date1' AND payments.updated_at <= '$date2')
+        GROUP BY
+        	users.`name`,
+        	payments.created_at,
+        	payments.payment_method,
+        	payments.localizador,
+        	payments.id_user
       "));
 
 
@@ -124,6 +130,12 @@ class HomeController extends Controller
         'cantservicios',
         'totales'
       ));
+    }
+
+    public static function checkclient($id)
+    {
+        $checkpaid = Travels::where('localizador',$id)->where('passenger_order',1)->get();
+        return $checkpaid[0]->client_fullname;
     }
 
 
