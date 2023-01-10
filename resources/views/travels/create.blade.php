@@ -251,9 +251,12 @@ function suma(){
 
     var sum1 = document.getElementById('pvp1').value;
 
-    document.getElementById("total").innerHTML = sum1
-    document.getElementById("pasajeros").innerHTML = "1"
+    document.getElementById("total").innerHTML = sum1;
+    document.getElementById("pasajeros").innerHTML = "1";
 
+    // set min
+    neto1 = document.getElementById("neto1").value;
+    document.getElementById('pvp1').min = neto1;
   }
 
   if(counter == 2){
@@ -263,6 +266,10 @@ function suma(){
 
     document.getElementById("total").innerHTML = sumatoria;
     document.getElementById("pasajeros").innerHTML = "2";
+
+    // set min
+    neto2 = document.getElementById("neto2").value;
+    document.getElementById('pvp2').min = neto1;
 
   }
 
@@ -274,6 +281,10 @@ function suma(){
 
     document.getElementById("total").innerHTML = sumatoria;
     document.getElementById("pasajeros").innerHTML = "3";
+
+    // set min
+    neto3 = document.getElementById("neto3").value;
+    document.getElementById('pvp3').min = neto3;
 
   }
 
@@ -287,6 +298,10 @@ function suma(){
     document.getElementById("total").innerHTML = sumatoria;
     document.getElementById("pasajeros").innerHTML = "4";
 
+    // set min
+    neto4 = document.getElementById("neto4").value;
+    document.getElementById('pvp4').min = neto4;
+
   }
 
   if(counter == 5){
@@ -299,6 +314,10 @@ function suma(){
 
     document.getElementById("total").innerHTML = sumatoria;
     document.getElementById("pasajeros").innerHTML = "5";
+
+    // set min
+    neto5 = document.getElementById("neto5").value;
+    document.getElementById('pvp5').min = neto5;
 
   }
   //
