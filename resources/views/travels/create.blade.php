@@ -269,7 +269,7 @@ function suma(){
 
     // set min
     neto2 = document.getElementById("neto2").value;
-    document.getElementById('pvp2').min = neto1;
+    document.getElementById('pvp2').min = neto2;
 
   }
 
