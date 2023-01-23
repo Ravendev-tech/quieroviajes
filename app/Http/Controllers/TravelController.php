@@ -74,7 +74,12 @@ class TravelController extends Controller
     {
       $userid = Auth::id();
       $localizador = request('localizador');
-      $counter = $request->counter;
+      $validalocalizador = Travels::where("localizador","=",$localizador )->count();
+      if($validalocalizador > 1){
+        return "Ya existe un epediente con ese Localizador, debes eliminar el anterior para poder cargar este.";
+      }
+      else{
+        $counter = $request->counter;
       for ($i = 1; $i <= $counter; $i++) {
         // print "<p>$i</p>\n";
         $name = "name".$i;
@@ -100,6 +105,7 @@ class TravelController extends Controller
             'id_user'  => $userid,
           ]);
       };
+      }
 
       return redirect(route('payment.edit',[$localizador]))->with('message', 'State saved correctly!!!');;
 
