@@ -46,33 +46,26 @@ class HomeController extends Controller
         $user = "payments.id_user = $request->user AND " ;
       }
       $daily = DB::select(DB::raw("SELECT
-        	SUM(travels.travel_pvp) AS pvp,
-        	SUM(travels.travel_neto) AS neto,
-        	users.`name`,
-        	payments.created_at,
-        	payments.payment_method,
-        	payments.localizador,
-        	payments.id_user
-        FROM
-        	payments
-        	LEFT JOIN
-        	travels
-        	ON
-        		payments.localizador = travels.localizador
-        	LEFT JOIN
-        	users
-        	ON
-        		payments.id_user = users.id
-        WHERE
-            $user
-            payments.payment_status = 1 AND
-            (payments.updated_at >= '$date1' AND payments.updated_at <= '$date2')
-        GROUP BY
-        	users.`name`,
-        	payments.created_at,
-        	payments.payment_method,
-        	payments.localizador,
-        	payments.id_user
+      SUM(travels.travel_pvp) AS pvp, 
+      SUM(travels.travel_neto) AS neto, 
+      travels.localizador, 
+      travels.id_user, 
+	    travels.created_at,
+      users.`name`
+    FROM
+      travels
+      LEFT JOIN
+      users
+      ON 
+        travels.id_user = users.id
+    WHERE
+      travels.created_at >= '2023-01-18' AND
+      travels.created_at <= '2023-01-20'
+    GROUP BY
+      travels.localizador, 
+      travels.id_user, 
+      users.`name`,
+      travels.created_at
       "));
 
 

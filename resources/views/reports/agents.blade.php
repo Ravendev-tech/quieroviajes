@@ -56,8 +56,7 @@
               <thead class="table-light">
                 <tr>
                   <th>Fecha</th>
-                  <th>Cliente</th>
-                  <th>Método de pago</th>
+                  <th>Localizador</th>
                   <th>neto</th>
                   <th>PVP</th>
                   <th>Total</th>
@@ -69,11 +68,10 @@
                 @forelse($daily as $dailyItems)
                 <tr>
                   <td>{{$dailyItems->created_at}}</td>
-                  <td> <?php echo App\Http\Controllers\HomeController::checkclient($dailyItems->localizador); ?> </td>
-                  <td>{{$dailyItems->payment_method}}</td>
+                  <td>{{$dailyItems->localizador}}</td>
                   <td>{{$dailyItems->neto}}€</td>
                   <td>{{$dailyItems->pvp}}€</td>
-                  <td>{{$dailyItems->pvp - $dailyItems->neto}}€</td>
+                  <td>{{round($dailyItems->pvp - $dailyItems->neto,2)}}€</td>
                   <td>{{$dailyItems->name}}</td>
                 </tr>
 
