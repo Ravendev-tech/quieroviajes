@@ -59,8 +59,8 @@ class HomeController extends Controller
       ON 
         travels.id_user = users.id
     WHERE
-      travels.created_at >= $date1 AND
-      travels.created_at <= $date2
+      travels.created_at >= '$date1' AND
+      travels.created_at <= '$date2'
     GROUP BY
       travels.localizador, 
       travels.id_user, 
