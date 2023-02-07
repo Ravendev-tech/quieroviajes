@@ -12,7 +12,7 @@
           <div class="card-title d-flex align-items-center">
             <div><i class="bx bxs-user me-1 font-22 text-primary"></i>
             </div>
-            <h5 class="mb-0 text-primary">Nuevo Expediente</h5>
+            <h5 class="mb-0 text-primary">Editar Expediente</h5>
           </div>
           <hr>
           <form class="row g-3" action="{{route('travels.store2')}}" method="post">
@@ -25,6 +25,7 @@
             <div class="col-md-4">
               <label for="inputFirstName"  class="form-label">Localizador</label>
               <input type="text"  class="form-control" id="localizador" name="localizador" value="{{$expediente[0]->localizador}}" onclick="pastetext('localizador')"  required>
+              <input type="hidden" value="{{$expediente[0]->localizador}}" name="localizadorupdate">
             </div>
             <div class="col-md-4">
 							<label class="form-label">Fecha de Salida:</label>

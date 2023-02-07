@@ -74,6 +74,8 @@ class TravelController extends Controller
     {
       $userid = Auth::id();
       $localizador = request('localizador');
+
+
       $validalocalizador = Travels::where("localizador","=",$localizador )->count();
       if($validalocalizador > 1){
         return "Ya existe un epediente con ese Localizador, debes eliminar el anterior para poder cargar este.";
@@ -115,6 +117,8 @@ class TravelController extends Controller
     // this is for update
     public function store2(Request $request)
     {
+      $localizadorupdate = request('localizadorupdate');
+
       $userid = Auth::id();
       $localizador = request('localizador');
       $counter = $request->counter2;
@@ -143,6 +147,11 @@ class TravelController extends Controller
             'id_user'  => $userid,
           ]);
       };
+      
+      $updatelocalizador = DB::select(DB::raw("UPDATE travels SET localizador = '$localizador' WHERE localizador = '$localizadorupdate'"));
+      $updatelocalizador2 = DB::select(DB::raw("UPDATE payments SET localizador = '$localizador' WHERE localizador = '$localizadorupdate'"));
+
+      
 
       return redirect(route('payment.edit',[$localizador]))->with('message', 'State saved correctly!!!');;
 
