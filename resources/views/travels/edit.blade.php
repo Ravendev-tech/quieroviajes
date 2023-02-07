@@ -24,7 +24,7 @@
 						</div> -->
             <div class="col-md-4">
               <label for="inputFirstName"  class="form-label">Localizador</label>
-              <input type="text"  class="form-control" id="localizador" name="localizador" value="{{$expediente[0]->localizador}}" onclick="pastetext('localizador')"  required>
+              <input type="text"  class="form-control" id="localizador" <?php if( (Auth::user()->user_level) == 3 ){echo "readonly='readonly'";} ?> name="localizador" value="{{$expediente[0]->localizador}}" onclick="pastetext('localizador')"  required>
               <input type="hidden" value="{{$expediente[0]->localizador}}" name="localizadorupdate">
             </div>
             <div class="col-md-4">
@@ -39,8 +39,6 @@
               @else
               @endif
             </div>
-
-
 
             <div class="col-lg-4 mt-4">
               <div class="mb-3">
